@@ -4,36 +4,36 @@ type: guide
 order: 102
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Cette page suppose que vous avez déjà lu [Composants](components.html). Lisez cela en premier si vous êtes nouveau aux composants.
 
-## Prop Casing (camelCase vs kebab-case)
+## Casse des Props (camelCase vs kebab-case)
 
-<p>Cette page est en cours de traduction. Pour nous aider, vous pouvez participer sur <a href="https://github.com/vuejs-fr/vuejs.org" target="_blank">le dépôt GitHub dédié de Vuejs-FR</a>.</p><p>HTML attribute names are case-insensitive, so browsers will interpret any uppercase characters as lowercase. That means when you're using in-DOM templates, camelCased prop names need to use their kebab-cased (hyphen-delimited) equivalents:</p>
+<p>Cette page est en cours de traduction. Pour nous aider, vous pouvez participer sur <a href="https://github.com/vuejs-fr/vuejs.org" target="_blank">le dépôt GitHub dédié de Vuejs-FR</a>.</p><p>Les noms des attributs HTMl sont non sensibles à la casse, donc les navigateurs interpreteront toutes les majuscules comme des minuscules. Cela signifie que lorsque vous utilisez la syntaxe de template dans le HTML, les noms de props camelCased doivent utiliser leurs équivalents kebab-case (délimité par des tirets) :</p>
 
 ``` js
 Vue.component('blog-post', {
-  // camelCase in JavaScript
+  // camelCase dans le JavaScript
   props: ['postTitle'],
   template: '<h3>{{ postTitle }}</h3>'
 })
 ```
 
 ``` html
-<!-- kebab-case in HTML -->
+<!-- kebab-case dans le HTML -->
 <blog-post post-title="hello!"></blog-post>
 ```
 
-Again, if you're using string templates, this limitation does not apply.
+Cependant, si vous utilisez les templates sous forme de chaîne de caractères, cette limitation ne s'applique pas.
 
-## Prop Types
+## Types des Props
 
-So far, we've only seen props listed as an array of strings:
+Jusqu'à présent, nous avons toujours listé les props comme un tableau de chaînes de caractères : 
 
 ```js
 props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
 ```
 
-Usually though, you'll want every prop to be a specific type of value. In these cases, you can list props as an object, where the properties' names and values contain the prop names and types, respectively:
+Généralement, nous souhaitons que chaque prop ai un type de valeur spécifique. Dans ce cas, nous pouvons listé les props comme un objet où la clé représente le nom de la prop et la valeur, son type. Ce qui donne :
 
 ```js
 props: {
